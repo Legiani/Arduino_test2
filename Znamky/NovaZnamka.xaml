@@ -22,13 +22,13 @@
 				<Button Clicked="ulozit" Text="Uložit" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
 
 				<Label Text="Znamka:" Grid.Row="1" Grid.Column="0" Margin="10" VerticalTextAlignment="Center" />
-				<Entry Placeholder="2-" Grid.Row="1" Grid.Column="1" x:Name="znamka" Margin="0, 10, 0, 10" />
+				<Entry Keyboard="Numeric" Placeholder="2-" Grid.Row="1" Grid.Column="1" x:Name="znamka" Margin="0, 10, 0, 10" />
 
 				<Label Text="Váha:" Grid.Row="2" Grid.Column="0" Margin="10" VerticalTextAlignment="Center" />
 				<Entry Keyboard="Numeric" Placeholder="30" Grid.Row="2" Grid.Column="1" x:Name="vaha" HorizontalTextAlignment="Center" Margin="0, 10, 45, 10"/>
 
 				<Label Text="Předmět:" Grid.Row="3" Grid.Column="0" Margin="10" VerticalTextAlignment="Center" />
-				<Entry Keyboard="Numeric" Placeholder="M" Grid.Row="3" Grid.Column="1" x:Name="predmet" HorizontalTextAlignment="Center" Margin="0, 10, 45, 10"/>
+				<Entry Placeholder="M" Grid.Row="3" Grid.Column="1" x:Name="predmet" HorizontalTextAlignment="Center" Margin="0, 10, 45, 10"/>
 
 
 

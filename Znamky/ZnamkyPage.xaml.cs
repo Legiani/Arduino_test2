@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Znamky
@@ -27,7 +29,39 @@ namespace Znamky
 		{
 			var dbConnection = App.Database;
 			Database personDatabase = App.Database;
-			ListViewFormatted.ItemsSource = App.Database.GetItemsAsync().Result;
+			double cprumer = 0;
+			int cvaha = 0;
+			int cabsence = 0;
+
+			List<string> Predmety = new List<string>();
+			List<Znamka>Znamky = App.Database.GetItemsAsync().Result;
+			List<CPredmet> Vys = new List<CPredmet>();
+			foreach (var item in Znamky)
+			{
+				if (!Predmety.Contains(item.Predmet))
+				{
+					Predmety.Add(item.Predmet);
+				}
+				cprumer = cprumer + item.PravaZnamka();
+				if (item.Hodnoceni == 0) { cabsence++; }
+				cvaha = cvaha + item.Vaha;	
+			}
+
+			foreach (string item in Predmety)
+			{
+				CPredmet cpredmet = new CPredmet();
+				List<Znamka> prumer = Znamky.FindAll(s => s.Predmet == item && s.Hodnoceni != 0);
+				cpredmet.Znamek = prumer.Count();
+				cpredmet.Prumer = Math.Round(prumer.Average(x => x.PravaZnamka()), 2) / 10;
+				System.Diagnostics.Debug.WriteLine(Math.Round(prumer.Average(x => x.PravaZnamka()), 2) / 10);
+				System.Diagnostics.Debug.WriteLine("derp"+cpredmet.Prumer+"derp");
+				cpredmet.Predmet = item;
+				cpredmet.Absence = Znamky.Count(s => s.Hodnoceni == 0);
+				Vys.Add(cpredmet);
+				
+			}
+
+			ListViewFormatted.ItemsSource = Vys;
 
 		}
 
@@ -42,25 +76,15 @@ namespace Znamky
 		}
 
 		/// <summary>
-		/// Otevření stránky s detailem po kliknutí
+		/// Stranka přidání znamky
 		/// </summary>
+		/// <returns>The pridat.</returns>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">E.</param>
-		public async void SelectedItemMethod(object sender, ItemTappedEventArgs e)
+		/// <param name="args">Arguments.</param>
+		public void pridat(object sender, EventArgs args)
 		{
-			//////vytvoření Item s přijatímy daty
-			//Item item = e.Item as Item;
-			////přičte k množstí 1
-			//item.Quantity = item.Quantity + 1;
-			////vytvoření spojení s db
-			//var dbConnection = App.Database;
-			////db uživatelu
-			//Database userDatabase = App.Database;
-			////zapis(update) dat do db
-			//await App.Database.SaveItemAsync(item);
-			////počkej pro stabilitu
-			//await Task.Delay(1);
-			//fill();
+			Navigation.PushModalAsync(new NovaZnamka());
 		}
+
 	}
 }

@@ -54,6 +54,7 @@
     <Compile Include="rychloPocet.xaml.cs">
       <DependentUpon>rychloPocet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CPredmet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

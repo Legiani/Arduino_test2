@@ -20,5 +20,10 @@ namespace Znamky
 		{
 			return Vaha + " " + Hodnoceni + " " + Predmet;
 		}
+
+		public static implicit operator Znamka(string v)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
