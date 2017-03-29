@@ -30,7 +30,7 @@
 				<Button Clicked="rychloPocet" Text="Rychlí průměr" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
 			</Grid>
 
-			<ListView x:Name="ListViewFormatted" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" IsGroupingEnabled="false">
+			<ListView x:Name="ListViewFormatted" ItemTapped="SelectedItemMethod" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" IsGroupingEnabled="false">
 			    <ListView.ItemTemplate>
 					<DataTemplate>
 					    <ViewCell>

@@ -75,6 +75,12 @@ namespace Znamky
 			Navigation.PushModalAsync(new rychloPocet());
 		}
 
+		public async void SelectedItemMethod(object sender, ItemTappedEventArgs e)
+		{
+			//otevře novou stranku
+			await Navigation.PushModalAsync(new PrehledZnamek());
+		}
+
 		/// <summary>
 		/// Stranka přidání znamky
 		/// </summary>
